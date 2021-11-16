@@ -1,5 +1,6 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import SummaryForm from '../SummaryForm'
+import userEvent from '@testing-library/user-event'
 
 test('Initial conditions', () => {
   render(<SummaryForm />)
@@ -23,9 +24,9 @@ test('Checkbox disables button on first click and enables on second click', () =
     name: /confirm order/i
   })
 
-  fireEvent.click(checkbox)
+  userEvent.click(checkbox)
   expect(confirmButton).toBeEnabled()
 
-  fireEvent.click(checkbox)
+  userEvent.click(checkbox)
   expect(confirmButton).toBeDisabled()
 })
