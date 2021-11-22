@@ -3,6 +3,14 @@ import { pricePerItem } from '../constants'
 
 const OrderDetails = createContext()
 
+function formatCurrency (amount) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+  }).format(amount)
+}
+
 // create custom hook to check whether we are inside a provider
 export function useOrderDetails() {
   const context = useContext(OrderDetails)
@@ -28,10 +36,12 @@ export function OrderDetailsProvider (props) {
     toppings: new Map()
   })
 
+  const zeroCurrency = formatCurrency(0)
+
   const [totals, setTotals] = useState({
-    scoops: 0,
-    toppings: 0,
-    grandTotal: 0
+    scoops: zeroCurrency,
+    toppings: zeroCurrency,
+    grandTotal: zeroCurrency
   })
 
   useEffect(() => {
@@ -39,9 +49,9 @@ export function OrderDetailsProvider (props) {
     const toppingsSubTotal = calculateSubTotal('toppings', optionCounts)
     const grandTotal = scoopsSubTotal + toppingsSubTotal
     setTotals({
-      scoops: scoopsSubTotal,
-      toppings: toppingsSubTotal,
-      grandTotal
+      scoops: formatCurrency(scoopsSubTotal),
+      toppings: formatCurrency(toppingsSubTotal),
+      grandTotal: formatCurrency(grandTotal)
     })
   }, [optionCounts])
 
