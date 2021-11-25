@@ -52,10 +52,18 @@ test('order phases for happy path', async () => {
   const confirmOrderButton = screen.getByRole('button', { name: /confirm order/i })
   userEvent.click(confirmOrderButton)
 
+  // (L.80) expect 'loading' to show
+  const loading = screen.getByText(/loading/i)
+  expect(loading).toBeInTheDocument()
+
   // confirm order number on confirmation page
   const thankYouHeader = /* wait for the POST request */
     await screen.findByRole('heading', { name: /thank you/i })
   expect(thankYouHeader).toBeInTheDocument()
+
+  // (L.80) expect 'loading' to disappear
+  const notLoading = screen.queryByText(/loading/i) /* so we don't get an error */
+  expect(notLoading).not.toBeInTheDocument()
 
   const orderNumber = await screen.findByText(/order number/i)
   expect(orderNumber).toBeInTheDocument()
