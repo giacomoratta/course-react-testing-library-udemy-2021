@@ -2,17 +2,17 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Form from 'react-bootstrap/Form'
 
-export default function ScoopOption({ name, imagePath, updateItemCount }) {
+export default function ScoopOption ({ name, imagePath, updateItemCount }) {
   const handleChange = (event) => {
     updateItemCount(name, event.target.value)
   }
 
   return (
-    <Col xs={12} sm={6} md={4} lg={3} style={{textAlign: 'center'}}>
+    <Col xs={12} sm={6} md={4} lg={3} style={{ textAlign: 'center' }}>
       <img
         src={`http://localhost:3030/${imagePath}`}
         alt={`${name} scoop`}
-        style={{width: '75%'}}
+        style={{ width: '75%' }}
       />
       <Form.Group
         controlId={`${name}-count`}

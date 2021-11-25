@@ -5,7 +5,7 @@ import { formatCurrency } from '../utilities'
 const OrderDetails = createContext()
 
 // create custom hook to check whether we are inside a provider
-export function useOrderDetails() {
+export function useOrderDetails () {
   const context = useContext(OrderDetails)
 
   if (!context) {

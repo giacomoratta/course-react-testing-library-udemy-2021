@@ -4,7 +4,7 @@ import { OrderDetailsProvider } from './contexts/OrderDetails'
 
 // OrderDetailsProvider: only summary and entry pages need it
 
-function App() {
+function App () {
   return (
     <Container>
       <OrderDetailsProvider>
