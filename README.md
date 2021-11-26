@@ -1,3 +1,14 @@
+# Standard questions for testing
+
+1. What to render?
+2. Pass props to component(s)?
+3. Wrap render? (context, containers, etc.)
+4. Which file for defining the tests?
+5. What to test?
+6. How to test?
+7. Do we need to async/await?
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
