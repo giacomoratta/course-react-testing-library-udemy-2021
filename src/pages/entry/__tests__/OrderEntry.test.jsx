@@ -25,6 +25,7 @@ test('handles error for scoops and topping routes', async () => {
 
 
 test('disable order button for no scoops', async () => {
+  server.resetHandlers()
   render(<OrderEntry />)
 
   const orderButton = screen.getByRole('button', { name:/order sundae/i })
